@@ -3,8 +3,29 @@
 
 ;; spec of app-db
 (s/def ::greeting string?)
+(s/def ::companies map?)
 (s/def ::app-db
-  (s/keys :req-un [::greeting]))
+       (s/keys :req-un [::greeting]))
 
 ;; initial state of app-db
-(def app-db {:greeting "Hello Clojure in iOS and Android!"})
+(def app-db {
+              :greeting "Greenbow"
+              :companies '(
+                           { :name "Starbucks"
+                             :score 56.3
+                             :type :cafe
+                             }
+                           { :name "Costa Coffee"
+                             :score 65.7
+                             :type :cafe
+                             }
+                           { :name "Pizza Express"
+                             :score 65.3
+                             :type :restaurant
+                             }
+                           { :name "Prezzo"
+                             :score 75.4
+                             :type :restaurant
+                             }
+                           )
+              })
