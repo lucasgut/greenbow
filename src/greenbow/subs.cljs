@@ -10,3 +10,8 @@
   :companies
   (fn [db _]
     (:companies db)))
+
+(reg-sub
+  :company-name
+  (fn [db _]
+    (:company-name db)))

@@ -11,6 +11,7 @@
 (def scroll (r/adapt-react-class (.-ScrollView ReactNative)))
 (def image (r/adapt-react-class (.-Image ReactNative)))
 (def touchable-highlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))
+(def input (r/adapt-react-class (.-TextInput ReactNative)))
 
 (def logo-img (js/require "./images/cljs.png"))
 
