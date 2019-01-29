@@ -28,6 +28,14 @@
                              :score 75.4
                              :type :restaurant
                              }
+                           { :name "Mod Pizza"
+                             :score 88.4
+                             :type :restaurant
+                             }
+                           { :name "Pizza Hut"
+                             :score 48.4
+                             :type :restaurant
+                             }
                            )
               :company-name "N/A"
               })

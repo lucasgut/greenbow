@@ -15,11 +15,11 @@
        [ui/image {:source ui/logo-img
                   :style  (:image styles)}]
        [ui/touchable-highlight {:style {:background-color "#999" :padding 10 :border-radius 5}
-                             :on-press #(ui/alert @company-name)}
+                                :on-press #(ui/alert @company-name)}
         [ui/text {:style {:color "white" :text-align "center" :font-weight "bold"}} "Search"]]
-       [ui/input {:style {:height 40 :borderColor "gray" :borderWidth 1} :onChangeText #(dispatch [::events/set-company-name %]) :value @company-name}]
+       [ui/input {:style (:company-name-textinput styles) :onChangeText #(dispatch [::events/set-company-name %]) :value @company-name}]
        [ui/scroll
-       (for [company (seq @companies)]
-         ^{:key company}
-         [ui/text {:style (:result-text styles)} (str (:name company) ": " (:score company))]
-         )]])))
+        (for [company (seq @companies)]
+          ^{:key company}
+          [ui/text {:style (:result-text styles)} (str (:name company) ": " (:score company))]
+          )]])))
