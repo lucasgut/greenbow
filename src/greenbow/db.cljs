@@ -37,5 +37,5 @@
                              :type :restaurant
                              }
                            )
-              :company-name "N/A"
+              :company-name ""
               })
