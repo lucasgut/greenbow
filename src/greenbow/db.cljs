@@ -36,6 +36,22 @@
                              :score 48.4
                              :type :restaurant
                              }
+                           { :name "Tesco"
+                             :score 68.4
+                             :type :groceries
+                             }
+                           { :name "Morissons"
+                             :score 78.4
+                             :type :groceries
+                             }
+                           { :name "Aldi"
+                             :score 58.4
+                             :type :groceries
+                             }
+                           { :name "Lidl"
+                             :score 66.2
+                             :type :groceries
+                             }
                            )
               :company-name ""
               })

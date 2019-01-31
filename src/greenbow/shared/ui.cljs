@@ -13,7 +13,7 @@
 (def touchable-highlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))
 (def input (r/adapt-react-class (.-TextInput ReactNative)))
 
-(def logo-img (js/require "./images/cljs.png"))
+(def logo-img (js/require "./images/logo.png"))
 
 (defn alert [title]
       (.alert (.-Alert ReactNative) title))
