@@ -44,6 +44,14 @@
                              :score 78.4
                              :type :groceries
                              }
+                           { :name "Sainsbury"
+                             :score 73.2
+                             :type :groceries
+                             }
+                           { :name "Iceland"
+                             :score 42.1
+                             :type :groceries
+                             }
                            { :name "Aldi"
                              :score 58.4
                              :type :groceries
