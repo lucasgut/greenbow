@@ -15,3 +15,8 @@
   :company-name
   (fn [db _]
     (:company-name db)))
+
+(reg-sub
+  :search-result
+  (fn [db _]
+    (:search-result db)))

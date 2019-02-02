@@ -7,7 +7,7 @@
 
 (defn dashboard-view [styles]
   (let [greeting (subscribe [:get-greeting])
-        companies (subscribe [:companies])
+        search-result (subscribe [:search-result])
         company-name (subscribe [:company-name])]
     (fn [styles]
       [ui/view {:style (:view-dashboard styles)}
@@ -16,13 +16,13 @@
         [ui/image {:source ui/logo-img
                    :style  (:image-header styles)}]]
        [ui/view {:style (:view-search-input styles)}
-        [ui/input {:style (:text-search-input styles) :onChangeText #(dispatch [::events/set-company-name %]) :value @company-name}]
-        [ui/touchable-highlight {:style {:background-color "#999" :padding 10 :border-radius 5}
-                                 :on-press #(ui/alert @company-name)}
-         [ui/text {:style (:button-search-input styles)} "Search"]]]
+        [ui/input {:style (:text-search-input styles) :onChangeText #(dispatch [::events/set-company-name %])}]
+        [ui/touchable-highlight {:style (:button-search-input-highlight styles)
+                                 :on-press #(dispatch [::events/search-company @company-name])}
+         [ui/text {:style (:button-search-input-text styles)} "Search"]]]
        [ui/view {:style (:view-search-result-table styles)}
         [ui/scroll {:contentContainerStyle (:scrollview-search-result styles)}
-         (for [company (seq @companies)]
+         (for [company @search-result]
            ^{:key company}
            [ui/view {:style (:view-search-result-row styles)}
             [ui/view {:style (:view-search-result-column styles)}

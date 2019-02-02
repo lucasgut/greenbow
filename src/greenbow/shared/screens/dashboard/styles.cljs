@@ -28,7 +28,10 @@
                                                  :borderColor "gray"
                                                  :borderWidth 1
                                                  :backgroundColor "white" }
-                            :button-search-input { :color "white"
+                            :button-search-input-highlight { :background-color "#999"
+                                                             :padding 10
+                                                             :border-radius 5}
+                            :button-search-input-text { :color "white"
                                                    :text-align "center"
                                                    :font-weight "bold"}
                             :view-search-result-table { :flex 1

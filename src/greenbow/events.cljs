@@ -1,7 +1,9 @@
 (ns greenbow.events
   (:require
    [re-frame.core :refer [reg-event-db after]]
-   [clojure.spec.alpha :as s]
+   [clojure.spec.alpha :as spec]
+   [greenbow.shared.ui :as ui]
+   [greenbow.company-search :as company-search]
    [greenbow.db :as db :refer [app-db]]))
 
 ;; -- Interceptors ------------------------------------------------------------
@@ -11,8 +13,8 @@
 (defn check-and-throw
   "Throw an exception if db doesn't have a valid spec."
   [spec db [event]]
-  (when-not (s/valid? spec db)
-    (let [explain-data (s/explain-data spec db)]
+  (when-not (spec/valid? spec db)
+    (let [explain-data (spec/explain-data spec db)]
       (throw (ex-info (str "Spec check after " event " failed: " explain-data) explain-data)))))
 
 (def validate-spec
@@ -39,3 +41,8 @@
  validate-spec
  (fn [db [_ value]]
    (assoc db :company-name value)))
+
+(reg-event-db
+ ::search-company
+ (fn [db [_ value]]
+   (assoc db :search-result (seq (company-search/find-by-name (:companies db) value)))))

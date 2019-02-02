@@ -5,6 +5,7 @@
 (s/def ::greeting string?)
 (s/def ::companies map?)
 (s/def ::company-name string?)
+(s/def ::search-result (s/coll-of map? :kind vector?))
 (s/def ::app-db
        (s/keys :req-un [::greeting]))
 
@@ -62,4 +63,5 @@
                              }
                            )
               :company-name ""
+              :search-result []
               })
