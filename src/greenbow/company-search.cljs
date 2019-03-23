@@ -7,5 +7,3 @@
   (sort-by :score #(> %1 %2)
            (filter #(.contains (s/lower-case (:name %)) (s/lower-case search-string)) companies)))
 
-
-

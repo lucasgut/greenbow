@@ -3,8 +3,8 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.10.339"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server cljsjs/create-react-class]]
                  [re-frame "0.10.6"]]
   :plugins [[lein-cljsbuild "1.1.4"]
@@ -34,6 +34,10 @@
                                              :figwheel     true
                                              :compiler     {:output-to     "target/android/index.js"
                                                             :main          "env.android.main"
+                                                            :npm-deps {
+                                                                        :react-native-autocomplete-input "3.6.0"
+                                                                        }
+                                                            :install-deps true
                                                             :output-dir    "target/android"
                                                             :optimizations :none
                                                             :target :nodejs}}

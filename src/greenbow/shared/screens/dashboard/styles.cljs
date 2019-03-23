@@ -18,6 +18,10 @@
                             :image-header { :width 100
                                             :height 80
                                             :margin-bottom 0}
+                            :view-auto-complete-input { :flex-direction "row"
+                                                 :justifyContent "space-around"
+                                                 :height 50
+                                                 :align-items "center" }
                             :view-search-input { :flex-direction "row"
                                                  :justifyContent "space-around"
                                                  :height 50

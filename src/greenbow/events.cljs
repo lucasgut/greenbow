@@ -15,7 +15,8 @@
   [spec db [event]]
   (when-not (spec/valid? spec db)
     (let [explain-data (spec/explain-data spec db)]
-      (throw (ex-info (str "Spec check after " event " failed: " explain-data) explain-data)))))
+;;       (throw (ex-info (str "Spec check after " event " failed: " explain-data) explain-data)))))
+      (throw (ex-info "Lucas" explain-data)))))
 
 (def validate-spec
   (if goog.DEBUG

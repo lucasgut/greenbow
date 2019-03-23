@@ -16,6 +16,9 @@
         [ui/image {:source ui/logo-img
                    :style  (:image-header styles)}]]
        [ui/view {:style (:view-search-input styles)}
+        [ui/autocomplete-input { :inputContainerStyle (:text-search-input styles)
+                                 :data ["supermarket", "garage", "house"]}]]
+       [ui/view {:style (:view-search-input styles)}
         [ui/input {:style (:text-search-input styles) :onChangeText #(dispatch [::events/set-company-name %])}]
         [ui/touchable-highlight {:style (:button-search-input-highlight styles)
                                  :on-press #(dispatch [::events/search-company @company-name])}
