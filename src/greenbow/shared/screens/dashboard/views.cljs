@@ -21,7 +21,10 @@
         [ui/autocomplete-input { :inputContainerStyle (:text-search-input styles)
                                  :listStyle {:zIndex 1 :position "absolute"}
                                  :data (company-search/find-establishment-keywords @search-keywords @company-name)
-                                 :onChangeText #(dispatch [::events/set-company-name %])}]
+                                 :onChangeText #(dispatch [::events/set-company-name %])
+                                 :renderItem (fn [item] (r/as-element [ui/touchable-opacity {:style {:flex 1 :activeOpacity 1 :background-color "transparent"}
+                                                                                   :on-press #(dispatch [::events/search-company-by-establishment-keyword item])}
+                                                             [ui/text {:style {:color "red"}} item]]))}]
         [ui/touchable-highlight {:style (:button-search-input-highlight styles)
                                  :on-press #(dispatch [::events/search-company @company-name])}
          [ui/text {:style (:button-search-input-text styles)} "Search"]]]
