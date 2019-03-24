@@ -3,12 +3,14 @@
             [re-frame.core :refer [subscribe dispatch dispatch-sync]]
             [greenbow.events :as events]
             [greenbow.subs]
-            [greenbow.shared.ui :as ui]))
+            [greenbow.shared.ui :as ui]
+            [greenbow.company-search :as company-search]))
 
 (defn dashboard-view [styles]
   (let [greeting (subscribe [:get-greeting])
         search-result (subscribe [:search-result])
-        company-name (subscribe [:company-name])]
+        company-name (subscribe [:company-name])
+        search-keywords (subscribe [:search-keywords])]
     (fn [styles]
       [ui/view {:style (:view-dashboard styles)}
        [ui/view {:style (:view-header styles)}
@@ -17,9 +19,9 @@
                    :style  (:image-header styles)}]]
        [ui/view {:style (:view-search-input styles)}
         [ui/autocomplete-input { :inputContainerStyle (:text-search-input styles)
-                                 :data ["supermarket", "garage", "house"]}]]
-       [ui/view {:style (:view-search-input styles)}
-        [ui/input {:style (:text-search-input styles) :onChangeText #(dispatch [::events/set-company-name %])}]
+                                 :listStyle {:zIndex 1 :position "absolute"}
+                                 :data (company-search/find-establishment-keywords @search-keywords @company-name)
+                                 :onChangeText #(dispatch [::events/set-company-name %])}]
         [ui/touchable-highlight {:style (:button-search-input-highlight styles)
                                  :on-press #(dispatch [::events/search-company @company-name])}
          [ui/text {:style (:button-search-input-text styles)} "Search"]]]

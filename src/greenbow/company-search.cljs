@@ -7,3 +7,11 @@
   (sort-by :score #(> %1 %2)
            (filter #(.contains (s/lower-case (:name %)) (s/lower-case search-string)) companies)))
 
+(defn- find-establishment-keywords-filter [keyword search-string]
+  (if (> (count search-string) 1)
+    (.contains (s/lower-case keyword) (s/lower-case search-string))
+    (.startsWith (s/lower-case keyword) (s/lower-case search-string))))
+
+;; Filter the specified list of establishment keywords
+(defn find-establishment-keywords [establishment-keywords search-string]
+  (filter #(find-establishment-keywords-filter % search-string) establishment-keywords))

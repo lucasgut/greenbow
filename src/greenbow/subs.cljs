@@ -20,3 +20,8 @@
   :search-result
   (fn [db _]
     (:search-result db)))
+
+(reg-sub
+  :search-keywords
+  (fn [db _]
+    (:establishment-keywords db)))
