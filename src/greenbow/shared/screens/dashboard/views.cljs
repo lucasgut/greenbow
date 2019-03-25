@@ -18,13 +18,13 @@
         [ui/image {:source ui/logo-img
                    :style  (:image-header styles)}]]
        [ui/view {:style (:view-search-input styles)}
-        [ui/autocomplete-input { :inputContainerStyle (:text-search-input styles)
-                                 :listStyle {:zIndex 1 :position "absolute"}
-                                 :data (company-search/find-establishment-keywords @search-keywords @company-name)
+        [ui/autocomplete-input { :inputContainerStyle (:autocomplete-search-input-container styles)
+                                 :listStyle (:autocomplete-search-list-container styles)
+                                 :data (company-search/get-establishment-keywords @search-keywords @company-name)
                                  :onChangeText #(dispatch [::events/set-company-name %])
-                                 :renderItem (fn [item] (r/as-element [ui/touchable-opacity {:style {:flex 1 :activeOpacity 1 :background-color "transparent"}
+                                 :renderItem (fn [item] (r/as-element [ui/touchable-opacity {:style (:autocomplete-search-list-highlight styles)
                                                                                    :on-press #(dispatch [::events/search-company-by-establishment-keyword item])}
-                                                             [ui/text {:style {:color "red"}} item]]))}]
+                                                             [ui/text {:style (:autocomplete-search-list-text styles)} item]]))}]
         [ui/touchable-highlight {:style (:button-search-input-highlight styles)
                                  :on-press #(dispatch [::events/search-company @company-name])}
          [ui/text {:style (:button-search-input-text styles)} "Search"]]]

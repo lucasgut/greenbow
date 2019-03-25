@@ -46,12 +46,10 @@
 (reg-event-db
   ::search-company
   (fn [db [_ value]]
-    (ui/alert value)
     (assoc db :search-result (seq (company-search/find-by-name (:companies db) value)))))
 
 ;; Search companies by establishment keyword
 (reg-event-db
   ::search-company-by-establishment-keyword
   (fn [db [_ key_word]]
-    (ui/alert key_word)
     (assoc db :search-result (seq (company-search/find-by-establishment (:companies db) (company-search/get-establishment-by-keyword db/establishments key_word))))))

@@ -23,18 +23,23 @@
                                                  :height 50
                                                  :paddingHorizontal 20
                                                  :align-items "center"}
-                            :text-search-input { :height 40
-                                                 :width 200
-                                                 :margin-right 10
-                                                 :borderColor "gray"
-                                                 :borderWidth 1
-                                                 :backgroundColor "white" }
+                            :autocomplete-search-input-container { :height 40
+                                                                   :width 200
+                                                                   :margin-right 10
+                                                                   :borderColor "gray"
+                                                                   :borderWidth 1
+                                                                   :backgroundColor "white" }
+                            :autocomplete-search-list-container { :zIndex 1
+                                                                  :position "absolute" }
+                            :autocomplete-search-list-highlight { :background-color "#EEE"
+                                                                  :padding 2 }
+                            :autocomplete-search-list-text { :font-size 18 }
                             :button-search-input-highlight { :background-color "#999"
                                                              :padding 10
                                                              :border-radius 5}
                             :button-search-input-text { :color "white"
-                                                   :text-align "center"
-                                                   :font-weight "bold"}
+                                                        :text-align "center"
+                                                        :font-weight "bold"}
                             :view-search-result-table { :flex 1
                                                         :flex-direction "column"
                                                         :align-items "stretch"}
