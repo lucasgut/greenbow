@@ -46,7 +46,7 @@
 (reg-event-db
   ::search-company
   (fn [db [_ value]]
-    (assoc db :search-result (seq (company-search/find-by-name (:companies db) value)))))
+    (assoc db :search-result (seq (company-search/find-by-name-or-establishment (:companies db) value)))))
 
 ;; Search companies by establishment keyword
 (reg-event-db

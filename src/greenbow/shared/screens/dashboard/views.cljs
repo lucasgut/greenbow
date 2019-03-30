@@ -21,6 +21,7 @@
         [ui/autocomplete-input { :inputContainerStyle (:autocomplete-search-input-container styles)
                                  :listStyle (:autocomplete-search-list-container styles)
                                  :defaultValue @company-name
+                                 :placeholder "Company name or type"
                                  :data (company-search/get-establishment-keywords @search-keywords @company-name)
                                  :onChangeText #(dispatch [::events/set-company-name %])
                                  :renderItem (fn [item] (r/as-element [ui/touchable-opacity {:style (:autocomplete-search-list-highlight styles)
