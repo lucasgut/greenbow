@@ -16,7 +16,7 @@
   (when-not (spec/valid? spec db)
     (let [explain-data (spec/explain-data spec db)]
       ;;       (throw (ex-info (str "Spec check after " event " failed: " explain-data) explain-data)))))
-      (throw (ex-info "Lucas" explain-data)))))
+      (throw (ex-info "Greenbow" explain-data)))))
 
 (def validate-spec
   (if goog.DEBUG
@@ -50,6 +50,6 @@
 
 ;; Search companies by establishment keyword
 (reg-event-db
-  ::search-company-by-establishment-keyword
+  ::select-establishment-for-keyword
   (fn [db [_ key_word]]
-    (assoc db :search-result (seq (company-search/find-by-establishment (:companies db) (company-search/get-establishment-by-keyword db/establishments key_word))))))
+    (assoc db :company-name (.toString (company-search/get-establishment-by-keyword db/establishments key_word)))))

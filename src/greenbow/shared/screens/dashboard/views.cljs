@@ -20,10 +20,11 @@
        [ui/view {:style (:view-search-input styles)}
         [ui/autocomplete-input { :inputContainerStyle (:autocomplete-search-input-container styles)
                                  :listStyle (:autocomplete-search-list-container styles)
+                                 :defaultValue @company-name
                                  :data (company-search/get-establishment-keywords @search-keywords @company-name)
                                  :onChangeText #(dispatch [::events/set-company-name %])
                                  :renderItem (fn [item] (r/as-element [ui/touchable-opacity {:style (:autocomplete-search-list-highlight styles)
-                                                                                   :on-press #(dispatch [::events/search-company-by-establishment-keyword item])}
+                                                                                   :on-press #(dispatch [::events/select-establishment-for-keyword item])}
                                                              [ui/text {:style (:autocomplete-search-list-text styles)} item]]))}]
         [ui/touchable-highlight {:style (:button-search-input-highlight styles)
                                  :on-press #(dispatch [::events/search-company @company-name])}
