@@ -34,13 +34,21 @@ From terminal 2: start the react native console
 react-native run-android
 ```
 
+
+### Run tests
+`lein test-cljs` Run Clojurescript tests
+
+
 ### Production build
-`lein cljsbuild once`
+`lein prod-build` Production build
+
 
 ### External React Native modules
-1. react-native-autocomplete-input 3.6.0
-See project.clj to import nodejs module
-See ui.cljs to import as react class
+- react-native-autocomplete-input 3.6.0
+      An auto-complete textbox displaying a list with entries matching the entered text.
+
+See npm-deps in project.clj to import the nodejs module.
+See ui.cljs to import module as react class
 
 ### Appendix
 ```

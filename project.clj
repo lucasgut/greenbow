@@ -10,12 +10,14 @@
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-figwheel "0.5.14"]]
   :clean-targets ["target/" "index.ios.js" "index.android.js" #_($PLATFORM_CLEAN$)]
-  :aliases {"prod-build" ^{:doc "Recompile code with prod profile."}
-            ["do" "clean"
-             ["with-profile" "prod" "cljsbuild" "once"]]
-            "advanced-build" ^{:doc "Recompile code for production using :advanced compilation."}
-            ["do" "clean"
-             ["with-profile" "advanced" "cljsbuild" "once"]]}
+  :aliases { "prod-build" ^{:doc "Recompile code with prod profile."}
+                  ["do" "clean"
+                       ["with-profile" "prod" "cljsbuild" "once"]]
+             "test-cljs" ^{:doc "Run tests."}
+                  ["with-profile" "test" "doo" "node" "test" "once"]
+             "advanced-build" ^{:doc "Recompile code for production using :advanced compilation."}
+                  ["do" "clean"
+                       ["with-profile" "advanced" "cljsbuild" "once"]]}
   :jvm-opts ["-XX:+IgnoreUnrecognizedVMOptions" "--add-modules=java.xml.bind"]
   :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.14"]
                                   [com.cemerick/piggieback "0.2.1"]]
@@ -43,6 +45,16 @@
                                                             :target :nodejs}}
                                             #_($DEV_PROFILES$)]}
                    :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}
+             :test {:dependencies [[day8.re-frame/test "0.1.5"]]
+                    :plugins      [[lein-doo "0.1.11"]]
+                    :cljsbuild    {:builds
+                                       [{:id           "test"
+                                         :source-paths ["src" "test"]
+                                         :compiler     {:main          greenbow.runner
+                                                        :output-to     "target/test/test.js"
+                                                        :output-dir    "target/test"
+                                                        :optimizations :none
+                                                        :target        :nodejs}}]}}
              :prod {:cljsbuild {:builds [
                                           {:id           "ios"
                                            :source-paths ["src" "env/prod"]
