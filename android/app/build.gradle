@@ -105,6 +105,16 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            if (project.hasProperty('GREENBOW_STORE_FILE')) {
+                storeFile file(GREENBOW_STORE_FILE)
+                storePassword GREENBOW_STORE_PASSWORD
+                keyAlias GREENBOW_KEY_ALIAS
+                keyPassword GREENBOW_KEY_PASSWORD
+            }
+        }
+    }
     splits {
         abi {
             reset()

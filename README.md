@@ -41,6 +41,10 @@ react-native run-android
 
 ### Production build
 `lein prod-build` Production build
+`cd android && ./gradlew assembleRelease` Generate release APK
+
+One time command used to generate private key to sign the APK:
+`keytool -genkeypair -v -keystore greebow-apk.keystore -alias greenbow -keyalg RSA -keysize 2048 -validity 10000` Located under android/app.
 
 
 ### External React Native modules
@@ -49,6 +53,7 @@ react-native run-android
 
 See npm-deps in project.clj to import the nodejs module.
 See ui.cljs to import module as react class
+
 
 ### Appendix
 ```

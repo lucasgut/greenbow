@@ -12,7 +12,8 @@
   :clean-targets ["target/" "index.ios.js" "index.android.js" #_($PLATFORM_CLEAN$)]
   :aliases { "prod-build" ^{:doc "Recompile code with prod profile."}
                   ["do" "clean"
-                       ["with-profile" "prod" "cljsbuild" "once"]]
+;;                        ["with-profile" "prod" "cljsbuild" "once" "ios"]
+                       ["with-profile" "prod" "cljsbuild" "once" "android"]]
              "test-cljs" ^{:doc "Run tests."}
                   ["with-profile" "test" "doo" "node" "test" "once"]
              "advanced-build" ^{:doc "Recompile code for production using :advanced compilation."}
@@ -75,6 +76,7 @@
                                                           :optimize-constants true
                                                           :optimizations :simple
                                                           :target :nodejs
+                                                          :verbose false
                                                           :closure-defines {"goog.DEBUG" false}}}
                                           #_($PROD_PROFILES$)]}}
              :advanced {:dependencies [[react-native-externs "0.2.0"]]
