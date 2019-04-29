@@ -42,6 +42,9 @@ react-native run-android
 ### Production build
 `lein prod-build` Production build
 `cd android && ./gradlew assembleRelease` Generate release APK
+`react-native run-android --variant=release` Install release to device or emulator
+`adb logcat -v threadtime <device id> > debug.log` Capture device log. Use `adb devices` to find device.
+
 
 One time command used to generate private key to sign the APK:
 `keytool -genkeypair -v -keystore greebow-apk.keystore -alias greenbow -keyalg RSA -keysize 2048 -validity 10000` Located under android/app.
